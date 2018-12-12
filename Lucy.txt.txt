@@ -1,8 +1,54 @@
 #!/bin/bash
-function banner
+function main
 {
-        echo hello world
+    echo ____________________________________________________________________________
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo ____________________________________________________________________________
+    
+	echo
+	echo "(1) IP config"
+	echo "(2) Install Tools"
+	echo "(3) Tools"
+	echo "(4) Exit"
+	
+	echo ----------------------------------------------------------------------------
+	read -p "Enter:" input
+	if [ $input == '1' ]; 
+		then ipconfig; 
+	elif [ $input == '2' ]; 
+		then instools; 
+	else echo "Sry I did not understand that?"; 
+		main
+	fi
 	clear
 }
 
-banner
+function instools
+{
+    echo ____________________________________________________________________________
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo !                                                                          !
+    echo ____________________________________________________________________________
+	echo
+	echo "(1) bla"
+	echo "(2) bla"
+	echo "(3) bla"
+	echo "(4) Back"
+	
+	echo ----------------------------------------------------------------------------
+	read -p "Enter:" input
+	clear
+}
+
+main

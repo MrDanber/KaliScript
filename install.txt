@@ -1,0 +1,24 @@
+#!/bin/bash
+function install
+{
+    	echo "Installing script for you please give me a sec"
+	sleep 1
+
+	mkdir /bin/bash/lucy
+	cd /root/lucy
+	cp /root/lucy/Readme /bin/lucy
+	cp /root/lucy/Lucy.sh /bin/lucy
+	cp /root/lucy/INstall.sh /bin/lucy
+	clear
+
+	echo "Adding Lucy to PATH so you can access"
+	sleep 1
+
+	echo "Type Lucy from anywhere to start me"
+	sleep 1
+	gnome-terminal -- l
+
+	chmod +x /root/lucy/lucy.sh
+	
+}
+install

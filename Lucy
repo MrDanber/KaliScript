@@ -1,0 +1,161 @@
+#!/bin/bash
+function main
+{
+    #clear
+    #echo 'Please enter your Password to become root or else this aint working!!!'
+    #su
+    clear
+    echo ____________________________________________________________________________
+    echo !--------------------------------------------------------------------------!
+    echo
+    echo
+    echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°LUCY°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+    echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°By User°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+    echo
+    echo !--------------------------------------------------------------------------!
+    echo ____________________________________________________________________________
+  	echo
+	  echo "(1) Info"
+	  echo "(2) Install Tools"
+	  echo "(3) Tools"
+	  echo "(e) Exit"
+    echo ----------------------------------------------------------------------------
+	  read -p "Enter:" input
+
+	  if [ $input == '1' ];
+		    then F_info;
+	  elif [ $input == '2' ];
+		    then F_instools;
+    elif [[ $input == '3' ]];
+        then F_tools;
+        #statements
+    elif [[ $input == 'e' ]];
+        then Exit;
+        #statements
+	  else echo "Sry I did not understand that?";
+		   main
+	     fi
+	     clear
+}
+
+function F_info
+{
+  clear
+  echo ____________________________________________________________________________
+  echo !--------------------------------------------------------------------------!
+  echo
+  echo
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°LUCY°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°By User°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo
+  echo !--------------------------------------------------------------------------!
+  echo ____________________________________________________________________________
+	echo
+	echo "(1) bla"
+
+	echo ----------------------------------------------------------------------------
+	read -p "Enter 1 for back or 2 to exit:" input
+  if [ $input == '1' ];
+		then main;
+	elif [ $input == '2' ];
+    then Exit;
+	else echo "Sry I did not understand that?";
+		main
+	fi
+	clear
+  #statements
+}
+function F_instools
+{
+  clear
+  echo ____________________________________________________________________________
+  echo !--------------------------------------------------------------------------!
+  echo
+  echo
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°LUCY°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°By User°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo
+  echo !--------------------------------------------------------------------------!
+  echo ____________________________________________________________________________
+	echo
+	echo "(1) Ifconfig"
+	echo "(2) Nmap"
+	echo "(3) Zenmap"
+	echo "(b) Back"
+
+	echo ----------------------------------------------------------------------------
+	read -p "Enter:" input
+  if [ $input == '1' ];
+		then sudo apt-get install ifconfig;
+	elif [ $input == '2' ];
+		then sudo apt-get install nmap;
+  elif [[ $input == '3' ]];
+    then sudp apt-get install zenmap;
+    #statements
+  elif [[ $input == 'b' ]];
+  then main;
+    #statements
+	else echo "Sry I did not understand that?";
+		main
+	fi
+	clear
+}
+
+function F_tools
+{
+  clear
+  echo ____________________________________________________________________________
+  echo !--------------------------------------------------------------------------!
+  echo
+  echo
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°LUCY°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°By User°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  echo
+  echo !--------------------------------------------------------------------------!
+  echo ____________________________________________________________________________
+	echo
+echo
+echo "(1) Ifconfig"
+echo "(2) Nmap"
+echo "(3) Zenmap"
+echo "(4) Update/Upgrade/Clean"
+echo "(b) Back"
+
+echo ----------------------------------------------------------------------------
+read -p "Enter:" input
+if [ $input == '1' ];
+  then ifconfig;
+       main;
+elif [ $input == '2' ];
+  then F_nmap;
+       main;
+elif [[ $input == '3' ]];
+  then sudo zenmap;
+       main;
+  #statements
+elif [[ $input == '4' ]];
+  then sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean;
+     main;
+elif [[ $input == 'b' ]];
+  then mein;
+  #statements
+  #statements
+else echo "Sry I did not understand that?";
+  main
+fi
+clear
+  #statements
+}
+
+function F_nmap
+{
+  clear
+  echo 'Please input a single or the IP range you want to scan(OS Detection by default)'
+	echo ----------------------------------------------------------------------------
+	read -p "Enter:" input
+  sudo nmap -sV -T4 -O -F --version-light $input
+  read -n 1 -s
+  #statements
+  main
+}
+main

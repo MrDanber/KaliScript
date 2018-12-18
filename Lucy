@@ -81,6 +81,7 @@ function F_instools
 	echo "(1) Ifconfig"
 	echo "(2) Nmap"
 	echo "(3) Zenmap"
+  echo "(4) ClamAV"
 	echo "(b) Back"
 
 	echo ----------------------------------------------------------------------------
@@ -91,6 +92,9 @@ function F_instools
 		then sudo apt-get install nmap;
   elif [[ $input == '3' ]];
     then sudp apt-get install zenmap;
+    #statements
+  elif [[ $input == '4' ]];
+    then sudo apt-get install clamav clamav-freshclam;
     #statements
   elif [[ $input == 'b' ]];
   then main;
@@ -119,6 +123,8 @@ echo "(1) Ifconfig"
 echo "(2) Nmap"
 echo "(3) Zenmap"
 echo "(4) Update/Upgrade/Clean"
+echo "(5) ClamAV"
+echo "(6) Taskmanger"
 echo "(b) Back"
 
 echo ----------------------------------------------------------------------------
@@ -134,10 +140,25 @@ elif [[ $input == '3' ]];
        main;
   #statements
 elif [[ $input == '4' ]];
-  then sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean;
-     main;
+  then sudo apt-get update;
+       sudo apt-get upgrade;
+       sudo apt-get autoclean;
+       read -n 1 -s
+       main;
+elif [[ $input == '5' ]];
+then   sudo pkill -15 -x freshclam;
+       sudo freshclam;
+       sudo clamscan -i;
+       read -n 1 -s;
+       main;
+elif [[ $input == '6' ]];
+       then top;
+       main;
+  #statements
+
+  #statements
 elif [[ $input == 'b' ]];
-  then mein;
+  then main;
   #statements
   #statements
 else echo "Sry I did not understand that?";

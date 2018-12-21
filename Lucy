@@ -82,6 +82,9 @@ function F_instools
 	echo "(2) Nmap"
 	echo "(3) Zenmap"
   echo "(4) ClamAV"
+  echo "(5) Wireshark"
+  echo "(6) John the ripper"
+  echo "(7) Rkhunter"
 	echo "(b) Back"
 
 	echo ----------------------------------------------------------------------------
@@ -95,6 +98,15 @@ function F_instools
     #statements
   elif [[ $input == '4' ]];
     then sudo apt-get install clamav clamav-freshclam;
+  elif [[ $input == '5' ]];
+  then sudo aptitude install wireshark;
+elif [[ $input == '6' ]];
+  then sudo apt-get install john;
+elif [[ $input == '7' ]];
+  then sudo apt-get install rkhunter;
+  #statements
+  #statements
+    #statements
     #statements
   elif [[ $input == 'b' ]];
   then main;
@@ -125,6 +137,10 @@ echo "(3) Zenmap"
 echo "(4) Update/Upgrade/Clean"
 echo "(5) ClamAV"
 echo "(6) Taskmanger"
+echo "(7) Wireshark"
+echo "(8) John the ripper"
+echo "(9) Rkhunter"
+echo "(10)Kismet"
 echo "(b) Back"
 
 echo ----------------------------------------------------------------------------
@@ -152,7 +168,19 @@ then   sudo pkill -15 -x freshclam;
        read -n 1 -s;
        main;
 elif [[ $input == '6' ]];
-       then top;
+       then sudo top;
+elif [[ $input == '7' ]];
+       then sudo wireshark;
+elif [[ $input == '8' ]];
+      then sudo john;
+elif [[ $input == '9' ]];
+      then sudo rkhunter -c --skip-keypress;
+elif [[ $input == '10' ]];
+      then F_kismet;
+  #statements
+  #statements
+  #statements
+  #statements
        main;
   #statements
 
@@ -170,6 +198,8 @@ clear
 
 function F_nmap
 {
+  echo "test"
+  read -n 1 -s
   clear
   echo 'Please input a single or the IP range you want to scan(OS Detection by default)'
 	echo ----------------------------------------------------------------------------
@@ -180,3 +210,34 @@ function F_nmap
   main
 }
 main
+
+function F_kismet
+{
+  echo "test"
+  read -n 1 -s
+  clear
+  echo "Please copy your Wlan id (wlan0)"
+  ip a
+  read -n 1 -s
+  clear
+  echo "Please enter your Wlan Id"
+  read -p "Enter: " input
+  clear
+  echo "killing wlan prosses"
+  sudo airmon-ng check kill
+  clear
+  echo "Starting monitoring mode"
+  sudo airmon-ng start $input
+  clear
+  echo "Please copy new Wlan ID (wlan0mon)"
+  ip a
+  read -n 1 -s
+  echo "enter your Wlanmon ID"
+  read -p "Enter: " input
+  clear
+  echo "Starting kismet"
+  sudo kismet -c $input
+  main
+
+  #statements
+}
